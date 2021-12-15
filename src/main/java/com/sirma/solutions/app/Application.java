@@ -123,6 +123,7 @@ public class Application {
 				}
 			}
 		}
+		reader.close();
 		return employees;
 	}
 }
