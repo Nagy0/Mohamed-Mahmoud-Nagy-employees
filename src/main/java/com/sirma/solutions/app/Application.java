@@ -70,13 +70,11 @@ public class Application {
 	 */
 	private static void buildDataMap(List<Employee> employees) {
 		employees.stream().forEach(employee -> {
+			employee.setDaysWorked(
+					Utility.calculateProjectWorkingDays(employee.getDateTo(), employee.getDateFrom()));
 			if (!map.containsKey(employee.getProjectId())) {
-				employee.setDaysWorked(
-						Utility.calculateProjectWorkingDays(employee.getDateTo(), employee.getDateFrom()));
 				map.put(employee.getProjectId(), new ArrayList(Collections.singletonList(employee)));
 			} else {
-				employee.setDaysWorked(
-						Utility.calculateProjectWorkingDays(employee.getDateTo(), employee.getDateFrom()));
 				map.get(employee.getProjectId()).add(employee); // Update the list
 			}
 		});
